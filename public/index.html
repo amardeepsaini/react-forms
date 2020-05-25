@@ -24,6 +24,32 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
+    <script>
+      const url = window.location.href;
+      const previousPageUrl = window.history;
+      const timeWhenPageLoaded = new Date();
+      let title = document.title;
+      let userLangauge = navigator.language;
+      let userPlatform = navigator.platform;
+      let appPort = window.location.port;
+      window.addEventListener("beforeunload", function(e) {
+        e.preventDefault();
+        window.history.pushState({ prev: window.location.href }, null);
+        delete e["returnValue"];
+        //   e.returnValue = "";
+      });
+      console.log(
+        url,
+        timeWhenPageLoaded,
+        document.referrer,
+        window.history,
+        title,
+        userLangauge,
+        userPlatform,
+        appPort,
+        window
+      );
+    </script>
     <title>React App</title>
   </head>
   <body>
